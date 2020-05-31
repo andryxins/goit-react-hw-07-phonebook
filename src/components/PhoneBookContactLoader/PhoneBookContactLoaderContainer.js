@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getIsLoadingStatus } from '../../redux/isLoadingReducer/isLoadingSelectors';
+import { getIsLoadingStatus } from '../../redux/contactReducer/contactSelectors';
 import PhoneBookContactLoader from './PhoneBookContactLoader';
 
 const mapStateToProps = state => ({

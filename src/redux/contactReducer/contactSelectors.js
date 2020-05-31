@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 import { getFilterQuery } from '../filterReducer/filterSelectors';
 
-export const getContacts = state => state.contacts;
+export const getContacts = state => state.contacts.contacts;
+export const getIsLoadingStatus = state => state.contacts.isLoading;
 
 export const getFilteredContacts = createSelector(
   getContacts,
@@ -11,9 +12,3 @@ export const getFilteredContacts = createSelector(
       item.name.toLowerCase().includes(filter.toLowerCase()),
     ),
 );
-
-export const getOnDeleteContact = (reducer, id) =>
-  reducer.actions.deleteContact(id);
-
-export const getOnAddContact = (reducer, newContact) =>
-  reducer.actions.addContacts(newContact);

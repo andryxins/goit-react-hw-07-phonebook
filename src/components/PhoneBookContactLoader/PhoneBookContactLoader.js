@@ -1,5 +1,6 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
+import PropTypes from 'prop-types';
 import Style from './PhoneBookContactLoader.module.css';
 
 const PhoneBookContactLoader = ({ isLoading }) => {
@@ -14,6 +15,10 @@ const PhoneBookContactLoader = ({ isLoading }) => {
       />
     </div>
   ) : null;
+};
+
+PhoneBookContactLoader.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default PhoneBookContactLoader;
