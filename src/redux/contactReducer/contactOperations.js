@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as apiActions from '../../Api/apiActions';
+import contactOperationsTypes from './contactOperationsTypes';
 
 export const getAllContactsOpertation = createAsyncThunk(
-  'contacts/getAllContacts',
+  contactOperationsTypes.getAllContacts,
   async (usersParams, thunkApi) =>
     apiActions
       .getContacts()
@@ -11,7 +12,7 @@ export const getAllContactsOpertation = createAsyncThunk(
 );
 
 export const postNewContactOpertation = createAsyncThunk(
-  'contacts/postNewContact',
+  contactOperationsTypes.postNewContact,
   async (newContact, thunkApi) =>
     apiActions
       .addNewContact(newContact)
@@ -20,7 +21,7 @@ export const postNewContactOpertation = createAsyncThunk(
 );
 
 export const deleteContactOpertation = createAsyncThunk(
-  'contacts/deleteContactOpertation',
+  contactOperationsTypes.deleteContactOpertation,
   async (id, thunkApi) =>
     apiActions
       .deleteContact(id)
