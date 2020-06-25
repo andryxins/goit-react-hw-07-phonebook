@@ -1,29 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import PhoneBookListItem from '../PhoneBookListItem/PhoneBookListItemContainer';
 import Styles from './PhoneBookList.module.css';
 import transitionsStyle from '../../Transitions/slideTransition.module.css';
 
-export default class PhoneBookList extends Component {
-  static propTypes = {
-    phoneBookItems: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string,
-      }),
-    ).isRequired,
-    onGetAllContact: PropTypes.func,
-  };
-  componentDidMount() {
-    const { onGetAllContact } = this.props;
-    onGetAllContact();
-  }
-  render() {
-    const { phoneBookItems } = this.props;
-    return (
-      <TransitionGroup component="ul" className={Styles.container}>
+const PhoneBookList = ({phoneBookItems, onGetAllContact}) => {
+
+    useEffect(() => {
+      onGetAllContact()
+    },[])
+
+return (
+    <TransitionGroup component="ul" className={Styles.container}>
         {phoneBookItems.map(contact => (
           <CSSTransition
             in
@@ -36,6 +25,18 @@ export default class PhoneBookList extends Component {
           </CSSTransition>
         ))}
       </TransitionGroup>
-    );
-  }
+    )
 }
+
+PhoneBookList.propTypes = {
+  phoneBookItems: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string,
+      }),
+    ).isRequired,
+    onGetAllContact: PropTypes.func,
+}
+
+export default PhoneBookList
